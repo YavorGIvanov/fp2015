@@ -1,5 +1,7 @@
 #lang racket
 
+(provide take3)
+
 ;recursive
 (define (take2 n items)
   (cond [(> n (length items)) '()]
