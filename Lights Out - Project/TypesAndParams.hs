@@ -4,6 +4,8 @@ module TypesAndParams
 , Index
 , rows
 , cols
+, maxRows
+, maxCols
 ) where
 
 type BoolList = [Bool]
@@ -15,3 +17,9 @@ rows = 5
 
 cols :: Int
 cols = 5
+
+maxRows :: Int
+maxRows = rows*rows
+
+maxCols :: Int
+maxCols = cols*cols
