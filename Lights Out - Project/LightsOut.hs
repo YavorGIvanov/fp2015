@@ -17,8 +17,8 @@ listToMatrix xs = (take rows xs) : listToMatrix (drop rows xs)
 --Bla
 
 main = do 
-	putStrLn "Welcome to the Lights Out 5x5 Solver!"
-	putStrLn "Enter the puzzle you want me to solve: \n"
+	putStrLn "Welcome to the Lights Out nxn(currently 9x9) Solver!"
+	putStrLn "Enter the puzzle(9x9) you want me to solve: \n"
 	puzzle <- getLine
 	putStrLn "\nHere is the solution. True means click there. \nThe order of clicks doesn't matter."
 	putStrLn "When you've clicked on all the positions \nwith value True the puzzle will be solved.\n"

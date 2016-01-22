@@ -18,12 +18,16 @@ findPivot :: BoolList -> Bool
 findPivot xs
 	| takeWhile (==False) xs == [] = False 
 
+minLenList :: BoolList -> BoolList -> BoolList
+minLenList xs ys = if (length xs < length ys) then xs else ys
+
 backSubstitution :: BoolMat -> BoolList
 backSubstitution matrix = backSubstitution' (maxRows - 1) []
 	where 
 		backSubstitution' (-1) found = found
-		backSubstitution' numRow found
-			| (not pivot) && lastElem = error "No solution"
+		backSubstitution' numRow found 
+			| not pivot && pivotValue = error "No solution"
+			| not pivot && not pivotValue = minLenList (backSubstitution' (numRow-1) (True:found)) (backSubstitution' (numRow-1) (False:found))
 			| otherwise = backSubstitution' (numRow-1) (pivotValue:found)
 				where
 					pivotValue = foldr xor lastElem (zipWith (&&) found (init right))

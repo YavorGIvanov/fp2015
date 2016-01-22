@@ -1,3 +1,6 @@
+{-|
+	This module generates rows*rows x rows*rows Toggle matrix
+-}
 module ToggleMatrix 
 (toggleMat) 
 	where

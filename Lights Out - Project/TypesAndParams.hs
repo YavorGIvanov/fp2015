@@ -1,3 +1,6 @@
+{-|
+	In this module we store the main types and parameters used in the whole project
+-}
 module TypesAndParams 
 ( BoolList
 , BoolMat
@@ -13,10 +16,10 @@ type BoolMat = [BoolList]
 type Index = (Int, Int)
 
 rows :: Int
-rows = 5
+rows = 9
 
 cols :: Int
-cols = 5
+cols = 9
 
 maxRows :: Int
 maxRows = rows*rows

@@ -18,7 +18,9 @@ import ToggleMatrix
 findPivot :: Int -> Int -> BoolMat -> Int
 findPivot startRow currCol = (\x -> x + startRow).length.takeWhile (==False).drop startRow.takeNthCol currCol
 
--- |sums up two rows using xor and returns the 
+-- |sums up two rows using xor and returns the resulting list. Only sums if
+-- |the value at pivotPosition in ys is True. 
+-- |pivotPosition is the position in the pivotRow where the first True value is found
 sumTwoRows :: BoolList -> BoolList -> BoolList
 sumTwoRows pivotList ys
 	| not (ys !! (length (takeWhile (==False) pivotList))) = ys
@@ -27,10 +29,10 @@ sumTwoRows pivotList ys
 -- |transforms a particular column in echelon form
 makeEchelon :: Int -> BoolMat -> BoolMat
 makeEchelon numCol matrix
-	| pivotIndex < length matrix && pivotIndex > -1 = upper ++ (pivot:(map (\x -> sumTwoRows pivot x) bottom))
+	| pivotIndex < length matrix && pivotIndex > -1 = upper ++ (pivotRow:(map (\x -> sumTwoRows pivotRow x) bottom))
 	| otherwise = matrix
 		where 
-			(upper, pivot : bottom) = splitAt numCol (swapRows numCol pivotIndex matrix)
+			(upper, pivotRow : bottom) = splitAt numCol (swapRows numCol pivotIndex matrix)
 			pivotIndex = (findPivot numCol numCol matrix)
 
 -- |transforms a boolean matrix in echelon form
