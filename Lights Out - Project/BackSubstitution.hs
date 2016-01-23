@@ -19,7 +19,7 @@ findPivot xs
 	| takeWhile (==False) xs == [] = False 
 
 minLenList :: BoolList -> BoolList -> BoolList
-minLenList xs ys = if (length xs < length ys) then xs else ys
+minLenList xs ys = if (length (filter (==True) xs) < length (filter (==True) ys)) then xs else ys
 
 backSubstitution :: BoolMat -> BoolList
 backSubstitution matrix = backSubstitution' (maxRows - 1) []
